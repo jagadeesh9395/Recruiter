@@ -1,14 +1,15 @@
 package com.spi.model;
 
-import java.util.Objects;
 import javax.persistence.GeneratedValue;
 import javax.validation.constraints.Min;
 import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Pattern;
 import javax.validation.constraints.Size;
+import lombok.Data;
 import org.springframework.data.annotation.Id;
 import org.springframework.data.mongodb.core.mapping.Document;
 
+@Data
 @Document(collection = "recruiter")
 public class Recruiter implements Comparable<Recruiter> {
 
@@ -34,97 +35,6 @@ public class Recruiter implements Comparable<Recruiter> {
     private String contactNumber;
     private boolean isDeleted;
 
-    public String getId() {
-        return id;
-    }
-
-    public void setId(String id) {
-        this.id = id;
-    }
-
-    public String getRecruiterId() {
-        return recruiterId;
-    }
-
-    public void setRecruiterId(String recruiterId) {
-        this.recruiterId = recruiterId;
-    }
-
-    public String getFirstName() {
-        return firstName;
-    }
-
-    public void setFirstName(String firstName) {
-        this.firstName = firstName;
-    }
-
-    public String getLastName() {
-        return lastName;
-    }
-
-    public void setLastName(String lastName) {
-        this.lastName = lastName;
-    }
-
-    public String getEmailId() {
-        return emailId;
-    }
-
-    public void setEmailId(String emailId) {
-        this.emailId = emailId;
-    }
-
-    public String getContactNumber() {
-        return contactNumber;
-    }
-
-    public void setContactNumber(String contactNumber) {
-        this.contactNumber = contactNumber;
-    }
-
-    public boolean isDeleted() {
-        return isDeleted;
-    }
-
-    public void setDeleted(boolean deleted) {
-        isDeleted = deleted;
-    }
-
-
-    @Override
-    public boolean equals(Object o) {
-        if (this == o) return true;
-        if (o == null || getClass() != o.getClass()) return false;
-        Recruiter recruiter = (Recruiter) o;
-        return isDeleted == recruiter.isDeleted &&
-                Objects.equals(id, recruiter.id) &&
-                Objects.equals(recruiterId, recruiter.recruiterId) &&
-                Objects.equals(firstName, recruiter.firstName) &&
-                Objects.equals(lastName, recruiter.lastName) &&
-                Objects.equals(emailId, recruiter.emailId) &&
-                Objects.equals(contactNumber, recruiter.contactNumber);
-    }
-
-    @Override
-    public int hashCode() {
-
-        return Objects.hash(id, recruiterId, firstName, lastName, emailId, contactNumber, isDeleted);
-    }
-
-
-    @Override
-    public String toString() {
-        return "Recruiter{" +
-                "id='" + id + '\'' +
-                ", recruiterId='" + recruiterId + '\'' +
-                ", firstName='" + firstName + '\'' +
-                ", lastName='" + lastName + '\'' +
-                ", emailId='" + emailId + '\'' +
-                ", contactNumber='" + contactNumber + '\'' +
-                ", isDeleted=" + isDeleted +
-                '}';
-    }
-
     @Override
     public int compareTo(Recruiter o) {
         int val = 0;
@@ -135,4 +45,6 @@ public class Recruiter implements Comparable<Recruiter> {
         }
         return val;
     }
+
+
 }
